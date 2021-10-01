@@ -1,0 +1,92 @@
+[
+  {
+    "name":"White Hankies",
+    "price":500,
+    "description":"Hankie made of white linen cloth and edged with white crochet. Perfect hankie for a women who loves white colour",
+    "ratings":4.5,
+    "images":[{
+      "public_id":"White12345",
+      "url":"https://res.cloudinary.com/bookit/image/upload/v1608062030/products/dsvbpny402gelwugv2le.jpg"
+      }],
+      "category":"Hankies",
+      "seller":"Laya",
+      "Stock":10,
+      "numofReviews":5,
+      "reviews":[]
+  },
+  {
+    "name":"Peach Hankies",
+    "price":500,
+    "description":"Hankie made of white linen cloth and edged with peach crochet. Perfect hankie for a women who loves white and peach colour",
+    "ratings":4.5,
+    "images":[{
+      "public_id":"Peach12345",
+      "url":"https://res.cloudinary.com/bookit/image/upload/v1608062030/products/dsvbpny402gelwugv2le.jpg"
+      }],
+      "category":"Hankies",
+      "seller":"Rose",
+      "Stock":15,
+      "numofReviews":5,
+      "reviews":[]
+  },
+  {
+    "name":"Lavender Bridal Hankies",
+    "price":500,
+    "description":"Hankie made of white linen cloth and edged with Lavender crochet. Perfect hankie for a women who loves white and lavender colour. Specially made for brides.",
+    "ratings":4.5,
+    "images":[{
+      "public_id":"Lavender12345",
+      "url":"https://res.cloudinary.com/bookit/image/upload/v1608062030/products/dsvbpny402gelwugv2le.jpg"
+      }],
+      "category":"Bridal Hankies",
+      "seller":"Chaya",
+      "Stock":10,
+      "numofReviews":5,
+      "reviews":[]
+  },
+  {
+    "name":"White Baby Swaddles",
+    "price":1500,
+    "description":"Baby Swaddles made of white soft muslin cloth and edged with white crochet. Perfect swaddles for baby",
+    "ratings":5,
+    "images":[{
+      "public_id":"WhiteBaby12345",
+      "url":"https://res.cloudinary.com/bookit/image/upload/v1608062030/products/dsvbpny402gelwugv2le.jpg"
+      }],
+      "category":"Baby Towels/Swaddles",
+      "seller":"Rose",
+      "Stock":20,
+      "numofReviews":5,
+      "reviews":[]
+  },
+  {
+    "name":"Crochet Lion",
+    "price":1500,
+    "description":"Baby toy suitable for kids upto 12 months. Non toxic better than plastic toys. ",
+    "ratings":10,
+    "images":[{
+      "public_id":"BabyToy12345",
+      "url":"https://res.cloudinary.com/bookit/image/upload/v1608062030/products/dsvbpny402gelwugv2le.jpg"
+      }],
+      "category":"Crochet Products",
+      "seller":"Rosamma",
+      "Stock":20,
+      "numofReviews":8,
+      "reviews":[]
+  },
+  {
+    "name":"Crochet Pillow Heart",
+    "price":1500,
+    "description":"Perfect for valentine day gift for your loved ones",
+    "ratings":5,
+    "images":[{
+      "public_id":"RedHeart12345",
+      "url":"https://res.cloudinary.com/bookit/image/upload/v1608062030/products/dsvbpny402gelwugv2le.jpg"
+      }],
+      "category":"Gift Products",
+      "seller":"Rosella",
+      "Stock":25,
+      "numofReviews":10,
+      "reviews":[]
+  }
+]
