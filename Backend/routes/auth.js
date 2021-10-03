@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {registerUser,loginUser,logout,forgotPassword,resetPassword,getUserProfile,updatePassword,updateProfile,allUsers,getUserDetails}=require('../controllers/authcontroller.js');
+const {registerUser,loginUser,logout,forgotPassword,resetPassword,getUserProfile,updatePassword,updateProfile,allUsers,getUserDetails,updateUser,deleteUser}=require('../controllers/authcontroller.js');
 const {isAuthenticatedUser,authorizeRoles}=require('../middlewares/auth.js');
 
 router.route('/register').post(registerUser);
@@ -17,5 +17,7 @@ router.route('/me/update').put(isAuthenticatedUser,updateProfile);
 
 router.route('/admin/users').get(isAuthenticatedUser,authorizeRoles('admin'),allUsers);
 router.route('/admin/user/:id').get(isAuthenticatedUser,authorizeRoles('admin'),getUserDetails);
+router.route('/admin/user/:id').put(isAuthenticatedUser,authorizeRoles('admin'),updateUser);
+router.route('/admin/user/:id').delete(isAuthenticatedUser,authorizeRoles('admin'),deleteUser);
 
 module.exports=router;

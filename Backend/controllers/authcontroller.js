@@ -165,13 +165,44 @@ exports.allUsers=catchAsyncErrors(async (req,res,next)=>{
 //Get user details => /api/v1/admin/user/:id
 exports.getUserDetails =catchAsyncErrors(async (req,res,next)=>{
   const user=await User.findById(req.params.id);
-  console.log(user)
+
   if(!user){
-    console.log(';nsdgfjnshhj')
     return next(new ErrorHandler(`User doesnot found with the id : ${req.params.id}`,400));
   }
   res.status(200).json({
     success:true,
     user
+  })
+})
+
+
+//update user profile  => /api/v1/admin/user/:id
+exports.updateUser=catchAsyncErrors(async (req,res,next)=>{
+  const newUserData={
+    name:req.body.name,
+    email:req.body.email,
+    role:req.body.role
+  }
+  //update avatar // TODO:
+  const user=await User.findByIdAndUpdate(req.params.id,newUserData,{
+    new:true,
+    runValidators:true
+  })
+  res.status(200).json({
+    success:true
+  })
+})
+
+//delete user  => /api/v1/admin/user/:id
+exports.deleteUser =catchAsyncErrors(async (req,res,next)=>{
+  const user=await User.findById(req.params.id);
+
+  if(!user){
+    return next(new ErrorHandler(`User doesnot found with the id : ${req.params.id}`,400));
+  }
+//remove avatar from cloudinary todo
+  await user.remove();
+  res.status(200).json({
+    success:true
   })
 })
