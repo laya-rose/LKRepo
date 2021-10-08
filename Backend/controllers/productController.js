@@ -17,9 +17,9 @@ exports.newProduct=catchAsyncErrors(async(req,res,next)=>{
 //To get all products => /api/v1/products
 //To get all products => /api/v1/products?keyword=hankies&category=Hankies&price[gte]=100&price[lte]=1500
 exports.getProducts=catchAsyncErrors(async(req,res,next)=>{
-
-  const resPerPage=4;
-  const productCount=await Product.currentDocument;
+  // return next(new ErrorHandler('My error',400));
+  const resPerPage=8;
+  const productsCount=await Product.countDocuments();
   const apiFeatures=new APIFeatures(Product.find(),req.query)
                     .search()
                     .filter()
@@ -28,8 +28,7 @@ exports.getProducts=catchAsyncErrors(async(req,res,next)=>{
   const products=await apiFeatures.query;
   res.status(200).json({
     success: true,
-    count:products.length,
-    productCount,
+    productsCount,
     products
   })
 })
