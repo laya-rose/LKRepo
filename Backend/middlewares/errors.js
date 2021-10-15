@@ -27,7 +27,7 @@ module.exports=(err,req,res,next)=>{
       error=new ErrorHandler(message,400);
     }
     //Hhandling the mongoose duplicate key error
-    if(err.code=11000){
+    if(err.code===11000){
       const message=`Duplicate ${Object.keys(err.keyValue)} entered.`
       error=new ErrorHandler(message,400);
     }
@@ -41,10 +41,12 @@ module.exports=(err,req,res,next)=>{
       const message='JSON Web Token is expired.Try again!! '
       error=new ErrorHandler(message,400);
     }
+    if(err.name==='Internal Server Error'){
     res.status(error.statusCode).json({
       success:false,
       message:error.message||"Internal Server Error"
     });
+  }
   }
   //this has been commented because seperate messages has to be shown while in production mode or developmen mode
   // err.message=err.message||"Internal Server Error";
