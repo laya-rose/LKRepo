@@ -9,10 +9,15 @@ import {
     PRODUCT_DETAILS_FAIL
 } from '../constants/productConstants'
 
-    export const getProducts=(keyWord='',currentPage=1)=>async(dispatch)=>{
+    export const getProducts=(keyWord='',currentPage=1,price)=>async(dispatch)=>{
         try {
            dispatch({type:ALL_PRODUCTS_REQUEST}) 
-           const {data}=await axios.get(`/api/v1/products?keyword=${keyWord}&page=${currentPage}`)
+
+           
+           let link=`/api/v1/products?keyword=${keyWord}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}`
+
+
+           const {data}=await axios.get(link)
            dispatch({
                type:ALL_PRODUCTS_SUCCESS,
                payload:data
