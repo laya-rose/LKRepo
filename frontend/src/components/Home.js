@@ -7,10 +7,20 @@ import Product from './product/Product'
 import Loader from './layouts/Loader'
 import { useAlert } from 'react-alert'
 import Pagination from 'react-js-pagination'
+import Slider from 'rc-slider'
+import 'rc-slider/assets/index.css';
+
+
+const {createSliderWithTooltip}=Slider;
+const Range=createSliderWithTooltip(Slider.Range)
+
 
 const Home=({match})=>{
 
     const [currentPage,setCurrentPage]=useState(1)
+
+    const [price,setPrice]=useState([1,5000]);
+
     const alert=useAlert();
     const dispatch=useDispatch();
 
@@ -22,10 +32,10 @@ const Home=({match})=>{
         if(error){  
                return alert.error(error)
         }
-        dispatch(getProducts(keyWord,currentPage));
+        dispatch(getProducts(keyWord,currentPage,price));
 
 
-    },[dispatch,alert , error, keyWord, currentPage])
+    },[dispatch,alert , error, keyWord, currentPage,price])
 
     function setCurrentPageNo(pageNumber){
         setCurrentPage(pageNumber)
@@ -40,9 +50,45 @@ const Home=({match})=>{
 
                     <section id="products" className="container mt-5">
                     <div className="row">
-                        {products && products.map(product=>( 
-                            <Product key ={product._id} product={product}/>
-                        ))}
+
+                        {keyWord? (
+                            <Fragment>
+                                <div className="col-6 col-md-3 mt-5 mb-5">
+                                    <div className="px-5">
+                                        <Range 
+                                            marks={{
+                                                1:`$1`,
+                                                5000:`$5000`
+                                            }}
+                                            min={1}
+                                            max={5000}
+                                            defaultValue={[1,5000]}
+                                            tipFormatter={value=>`$${value}`}
+                                            tipProps={{
+                                                placement:"top",
+                                                visible:true
+                                            }}
+                                            value={price}
+                                            onChange={price=>setPrice(price)}
+                                         />
+                                    </div>
+                                </div>
+                                <div className="col-6 col-md-9">
+                                    <div className="row">
+                                     {products && products.map(product=>( 
+                                    <Product key ={product._id} product={product} col={4}/>   
+                                     ))}
+                                    </div>
+                                </div>
+                            </Fragment>
+
+                        ):(
+                            
+                            products && products.map(product=>( 
+                            <Product key ={product._id} product={product} col={3}/>
+                        ))                             
+                        )}
+
                             
                     </div>
                 </section>
